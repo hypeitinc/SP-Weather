@@ -37,7 +37,7 @@ class modSPWeatherHelper {
         $this->params    = $params;
         $this->moduleID  = $id;
         $this->moduledir = basename(dirname(__FILE__));
-        $this->location         = str_replace(' ', '', $this->params->get('location', 'Dhaka,BD'));
+        $this->location         = str_replace(' ', '%20', $this->params->get('location', 'San Francisco, US'));
         $this->forecast_limit   = $this->params->get('forecast', '7');
         $this->api_key          = $this->params->get('api_key', '');
         $this->cache_time       = $this->params->get('cacheTime', '900');
