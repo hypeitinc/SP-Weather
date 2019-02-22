@@ -115,8 +115,16 @@
     	content: 'R';
     }
 
+    .meteocons-rain-night:before {
+    	content: 'S';
+    }
+
     .meteocons-snow:before {
     	content: 'W';
+    }
+
+    .meteocons-snow-night:before {
+        content: 'X';
     }
 
     .meteocons-chance-of-snow:before {

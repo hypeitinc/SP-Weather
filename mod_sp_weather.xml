@@ -3,12 +3,12 @@
 	<name>SP Weather</name>
 	<author>JoomShaper.com</author>
 	<creationDate>Sep 2012</creationDate>
-	<copyright>Copyright (C) 2010 - 2014 JoomShaper.com. All rights reserved.</copyright>
+	<copyright>Copyright (C) 2010 - 2019 JoomShaper.com. All rights reserved.</copyright>
 	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
 	<authorEmail>support@joomshaper.com</authorEmail>
 	<authorUrl>www.joomshaper.com</authorUrl>
-	<version>2.2.3</version>
-	<description>Weather module by JoomShaper.com using Yahoo weather API.</description>
+	<version>2.3</version>
+	<description>Weather module by JoomShaper.com using openweathermap API.</description>
 
 	<languages>
 		<language tag="en-GB">language/en-GB.mod_sp_weather.ini</language>
@@ -20,11 +20,13 @@
 		<folder>assets/</folder>
 		<folder>language/</folder>
 		<filename>helper.php</filename>
-		<filename>index.html</filename>
 	</files>
+	
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
+				<field name="api_key" type="text" label="MOD_SPWEATHER_APIKEY" description="MOD_SPWEATHER_APIKEY_DESC" />
+				<field name="api_key_note" type="note" label="MOD_SPWEATHER_APIKEY_DESC" />
 				<field name="location" type="text" default="London" label="LOCATION" description="LOCATION_DESC" />
 				<field name="locationTranslated" type="text" default="" label="LOCATION_TRANSLATED" description="LOCATION_TRANSLATED_DESC" />
 				<field name="city" type="radio" class="btn-group" default="1" label="CITY" description="CITY_DESC">
@@ -44,13 +46,13 @@
 					<option value="1">SHOW</option>
 				</field>
 				<field name="forecast" type="list" default="4" label="FORECAST" description="FORECAST_DESC">
-					<option value="2">SP_ONE_DAY</option>
-					<option value="3">SP_TWO_DAYS</option>			
-					<option value="4">SP_THREE_DAYS</option>			
-					<option value="5">SP_FOUR_DAYS</option>
-					<option value="6">SP_FIVE_DAYS</option>
-					<option value="7">SP_SIX_DAYS</option>
-					<option value="8">SP_ONE_WEEK</option>
+					<option value="1">1DAY</option>
+					<option value="2">2DAYS</option>			
+					<option value="3">3DAYS</option>			
+					<option value="4">4DAYS</option>
+					<option value="5">5DAYS</option>
+					<option value="6">6DAYS</option>
+					<option value="7">1WEEK</option>
 					<option value="disabled">DISABLED</option>			
 				</field>		
 				<field name="tmpl_layout" type="list" default="block" label="LAYOUT" description="LAYOUT_DESC">
