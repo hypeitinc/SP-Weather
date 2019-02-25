@@ -26,10 +26,12 @@ $data = $data['query']['results']['channel'];
 
                 <br style="clear:both" />
                 <p class="spw_current_temp">
+                    <?php $temp=$data['item']['condition']['temp'] ?>
+
                     <?php if ($params->get('tempUnit')=='f') { ?>
-                        <?php echo  $data['item']['condition']['temp']. JText::_('SP_WEATHER_F'); ?>	
+                    <?php echo  round($temp,1). JText::_('SP_WEATHER_F'); ?>
                     <?php } else { ?>
-                        <?php echo $data['item']['condition']['temp']. JText::_('SP_WEATHER_C'); ?>
+                    <?php echo round($temp,1). JText::_('SP_WEATHER_C'); ?>
                     <?php } ?>
                 </p>
             </div>
@@ -58,7 +60,8 @@ $data = $data['query']['results']['channel'];
                         $compass = array('N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW', 'N');
                         $data['wind']['direction'] =  (isset($data['wind']['direction']) && $data['wind']['direction']) ? $compass[round($data['wind']['direction'] / 22.5)] . JText::_('SP_WEATHER_AT') : '';
 
-                        echo JText::_($data['wind']['direction']) . $helper->Numeric2Lang($data['wind']['speed']) . ' ' . JText::_(($data['units']['speed'])); ?>
+                        echo JText::_($data['wind']['direction']) . $helper->Numeric2Lang(round($data['wind']['speed']*2.2369363)) . ' ' . JText::_(($data['units']['speed'])); ?>
+                        
                     </div>
                 <?php } ?>
             </div> <!-- /.weather_sp1_cright -->
@@ -109,11 +112,11 @@ $data = $data['query']['results']['channel'];
                                 <br style="clear:both" />
                                 <?php if ($params->get('tempUnit')=='f') { ?>
                                     <span class="weather_sp1_temp">
-                                        <?php echo $helper->convertUnit( $helper->tempConvert($value->temp->min) , 'f' ) . '&nbsp;' . $params->get('separator') . '&nbsp;' . $helper->convertUnit( $helper->tempConvert($value->temp->max) , 'f' ); ?>
+                                        <?php echo round($helper->convertUnit( $helper->tempConvert($value->temp->min) , 'f' )) . '&nbsp;' . $params->get('separator') . '&nbsp;' . round($helper->convertUnit( $helper->tempConvert($value->temp->max) , 'f' )); ?>
                                     </span>
                                 <?php } else { ?>
                                     <span class="weather_sp1_temp">
-                                        <?php echo $helper->convertUnit( $value->temp->min, 'c' ) . '&nbsp;' . $params->get('separator') . '&nbsp;' . $helper->convertUnit( $value->temp->max, 'c' ); ?>
+                                        <?php echo round($helper->convertUnit( $value->temp->min, 'c' )) . '&nbsp;' . $params->get('separator') . '&nbsp;' . round($helper->convertUnit( $value->temp->max, 'c' )); ?>
                                     </span>
                                 <?php } ?>   
                             <br style="clear:both" />

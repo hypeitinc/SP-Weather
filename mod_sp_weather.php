@@ -36,7 +36,7 @@ if($data['status']) {
     $data['query']['results']['channel']['item']['condition']['code'] = $data['current']->weather[0]->icon;
     
     $data['query']['results']['channel']['atmosphere']['humidity'] = $data['current']->main->humidity;
-    $data['query']['results']['channel']['units']['speed'] = JText::_('SP_WEATHER_WIND_SPEED_UNIT_MS');
+    $data['query']['results']['channel']['units']['speed'] = JText::_('SP_WEATHER_WIND_SPEED_UNIT_MPH');
     $data['query']['results']['channel']['wind']['speed'] = $data['current']->wind->speed;
     $data['query']['results']['channel']['wind']['direction'] = (isset($data['current']->wind->deg) && $data['current']->wind->deg) ? $data['current']->wind->deg : '';
     

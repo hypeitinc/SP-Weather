@@ -24,10 +24,12 @@ $data = $data['query']['results']['channel'];
                     <i class="meteocons-<?php echo  $helper->iconFont( $data['item']['condition']['code'] ) ?>" title="<?php echo $helper->txt2lng($data['item']['condition']['text']); ?>" alt="<?php echo $helper->txt2lng($data['item']['condition']['text']); ?>"></i>
                 </div>
                 <div class="sp-weather-current-temp">
+                    <?php $temp=$data['item']['condition']['temp'] ?>
+
                     <?php if ($params->get('tempUnit')=='f') { ?>
-                        <?php echo  $data['item']['condition']['temp']. JText::_('SP_WEATHER_F'); ?>    
+                        <?php echo  round($temp,1) . JText::_('SP_WEATHER_F'); ?>    
                     <?php } else { ?>
-                        <?php echo $data['item']['condition']['temp']. JText::_('SP_WEATHER_C'); ?>
+                        <?php echo round($temp,1) . JText::_('SP_WEATHER_C'); ?>
                     <?php } ?>
                 </div>
             </div>
@@ -59,7 +61,7 @@ $data = $data['query']['results']['channel'];
 
                     $data['wind']['direction'] = (isset($data['wind']['direction']) && $data['wind']['direction']) ? $compass[round($data['wind']['direction'] / 22.5)] . JText::_('SP_WEATHER_AT') : '';
 
-                    echo JText::_($data['wind']['direction']) . $helper->Numeric2Lang($data['wind']['speed']) . ' ' . JText::_(($data['units']['speed'])); ?>
+                    echo JText::_($data['wind']['direction']) . $helper->Numeric2Lang(round($data['wind']['speed']*2.2369363)) . ' ' . JText::_(($data['units']['speed'])); ?>
                 </div>
                 <?php } ?>
 
@@ -103,7 +105,7 @@ $data = $data['query']['results']['channel'];
                     </div>
                 </div>				
             <?php } else { ?> 
-                <div class="grid grid-<?php echo ($i%2 ? 'even' : 'odd') ?>" style="width:<?php echo round(100/$fcast) ?>%">
+                <div class="grid grid-<?php echo ($i%2 ? 'even' : 'odd') ?>" style="width:<?php echo round(100/$fcast)+5 ?>%">
                     <div class="media">
                         <div class="pull-left">
                             <div class="sp-weather-icon">
@@ -113,11 +115,11 @@ $data = $data['query']['results']['channel'];
                         <div class="media-body">
                             <?php if ($params->get('tempUnit')=='f') { ?>
                                 <div class="sp-weather-temp">
-                                    <?php echo $helper->convertUnit( $helper->tempConvert($value->temp->min) , 'f' ) . '&nbsp;' . $params->get('separator') . '&nbsp;' . $helper->convertUnit( $helper->tempConvert($value->temp->max) , 'f' ); ?>
+                                    <?php echo round($helper->convertUnit( $helper->tempConvert($value->temp->min) , 'f' )) . '&nbsp;' . $params->get('separator') . '&nbsp;' . round($helper->convertUnit( $helper->tempConvert($value->temp->max) , 'f' )); ?>
                                 </div>
                             <?php } else { ?>
                                 <div class="sp-weather-temp">
-                                    <?php echo $helper->convertUnit( $value->temp->min, 'c' ) . '&nbsp;' . $params->get('separator') . '&nbsp;' . $helper->convertUnit( $value->temp->max, 'c' ); ?>
+                                    <?php echo round($helper->convertUnit( $value->temp->min, 'c' )) . '&nbsp;' . $params->get('separator') . '&nbsp;' . round($helper->convertUnit( $value->temp->max, 'c' )); ?>
                                 </div>
                             <?php } ?>
                         </div>
