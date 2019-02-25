@@ -29,8 +29,10 @@
     	text-align: center;
     }
 
-    .sp-weather-forcasts {
+.sp-weather-forcasts {
     	margin-top: 10px;
+    	font-size: 14px;
+    	line-height: 18px;
     }
     .sp-weather .grid {
     	float: left;

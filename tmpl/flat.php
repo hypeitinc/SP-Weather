@@ -43,7 +43,7 @@ $data = $data['query']['results']['channel'];
                 <div class="sp-condition-humidity">
                     <?php if($params->get('condition')) { ?>
                     <span class="sp-condition">
-                        <?php echo $helper->txt2lng($data['item']['condition']['text']); ?>
+                        <?php echo $helper->txt2lng($data['item']['condition']['text']) . "<br />"; ?>
                     </span>
                     <?php } ?>
                     <?php if($params->get('humidity')) { ?>
@@ -106,6 +106,12 @@ $data = $data['query']['results']['channel'];
                 </div>				
             <?php } else { ?> 
                 <div class="grid grid-<?php echo ($i%2 ? 'even' : 'odd') ?>" style="width:<?php echo round(100/$fcast)+5 ?>%">
+                    
+                    <span class="weather_sp1_day">
+                                    <?php  echo $helper->txt2lng(JHtml::date($value->dt , 'D')); ?>
+                                </span>
+                                <br style="clear:both" />
+                    
                     <div class="media">
                         <div class="pull-left">
                             <div class="sp-weather-icon">
